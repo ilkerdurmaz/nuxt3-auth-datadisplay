@@ -18,6 +18,9 @@ useHead({
     },
   ],
 });
+
+const route = useRoute();
+
 function langChanged(val) {
   console.log(val);
 }
@@ -32,12 +35,12 @@ function logOut() {
       title="Display Data App"
       :langs="langs"
       @lang-changed="langChanged"
-      :main-button-show="true"
+      :main-button-show="!(route.path === '/login')"
       main-button-name="Log Out"
       @main-button-clicked="logOut"
     ></HeaderComp>
 
-    <div class="max-w-7xl mx-auto my-4 border-2 rounded px-2">
+    <div class="max-w-7xl mx-auto my-4 rounded px-2">
       <slot />
     </div>
   </div>
