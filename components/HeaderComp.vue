@@ -51,7 +51,7 @@ const mainButtonClickedHandler = () => emit("mainButtonClicked");
 
 <style scoped>
 .header-bar {
-  @apply border-b;
+  @apply border-b shadow;
 }
 .header-container {
   @apply flex justify-between items-center p-2 max-w-7xl mx-auto;
