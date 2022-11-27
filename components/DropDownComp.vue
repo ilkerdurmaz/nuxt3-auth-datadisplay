@@ -1,5 +1,8 @@
 <script setup>
 const props = defineProps({
+  modelValue: {
+    type: String,
+  },
   options: {
     type: Array,
     default: [
@@ -19,18 +22,14 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["valueChanged"]);
+defineEmits(["update:modelValue"]);
 </script>
 
 <template>
   <select
     :name="props.name"
     :id="props.id"
-    @change="
-      (e) => {
-        emit('valueChanged', e.target.value);
-      }
-    "
+    @change="$emit('update:modelValue', $event.target.value)"
     class="p-2 rounded border hover:border-black cursor-pointer"
   >
     <option
