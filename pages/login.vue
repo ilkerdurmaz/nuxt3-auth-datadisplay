@@ -1,5 +1,4 @@
 <script setup>
-import useAuth from "@/composables/useAuth";
 async function submitHandler(val) {
   const { data } = await useFetch("/api/auth", {
     method: "POST",
