@@ -1,12 +1,12 @@
 <script setup>
 const langs = [
   {
-    name: "Türkçe",
-    value: "tr",
+    name: "English",
+    value: "en",
   },
   {
-    name: "English",
-    value: "eng",
+    name: "Türkçe",
+    value: "tr",
   },
 ];
 useHead({
@@ -20,12 +20,10 @@ useHead({
 });
 
 const route = useRoute();
-
-function langChanged(val) {
-  console.log(val);
-}
 function logOut() {
-  console.log("logOut button clicked");
+  const auth = useAuth();
+  auth.setAuth(false);
+  navigateTo("/login");
 }
 </script>
 
@@ -34,9 +32,8 @@ function logOut() {
     <HeaderComp
       title="Display Data App"
       :langs="langs"
-      @lang-changed="langChanged"
       :main-button-show="!(route.path === '/login')"
-      main-button-name="Log Out"
+      :main-button-name="$t('logout')"
       @main-button-clicked="logOut"
     ></HeaderComp>
 
