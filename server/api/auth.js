@@ -21,6 +21,6 @@ export default defineEventHandler(async (event) => {
   }
   return {
     status: 401,
-    message: "Invalid email or password",
+    message: "Authentication Error!",
   };
 });
