@@ -7,4 +7,5 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  middleware: ["auth-check"],
 });
