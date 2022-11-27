@@ -22,19 +22,19 @@ function submitHandler(e) {
     @submit.prevent="submitHandler"
     class="flex flex-col gap-4 px-4 max-w-xs"
   >
-    <h1 class="text-5xl my-2 text-center">Sign-in</h1>
+    <h1 class="text-5xl my-2 text-center">{{ $t("signin") }}</h1>
     <InputComp
-      placeholder="E-Mail"
+      :placeholder="$t('email')"
       type="text"
       name="email"
     ></InputComp>
 
     <InputComp
-      placeholder="Password"
+      :placeholder="$t('password')"
       type="password"
       name="password"
     ></InputComp>
-    <ButtonComp>Login</ButtonComp>
+    <ButtonComp>{{ $t("login") }}</ButtonComp>
   </form>
 </template>
 
