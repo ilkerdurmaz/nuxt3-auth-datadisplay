@@ -23,8 +23,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["langChanged", "mainButtonClicked"]);
-const langChangeHandler = (val) => emit("langChanged", val);
+const emit = defineEmits(["mainButtonClicked"]);
 const mainButtonClickedHandler = () => emit("mainButtonClicked");
 </script>
 
@@ -42,7 +41,7 @@ const mainButtonClickedHandler = () => emit("mainButtonClicked");
         >
         <DropDownComp
           :options="langs"
-          @value-changed="langChangeHandler"
+          v-model="$i18n.locale"
         ></DropDownComp>
       </div>
     </div>
