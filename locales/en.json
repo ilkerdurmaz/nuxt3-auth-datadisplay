@@ -1,6 +1,10 @@
 {
   "login": "Log-in",
+  "logout": "Log-Out",
   "signin": "Sign in",
   "email": "E-mail",
-  "password": "Password"
+  "password": "Password",
+  "previous": "Previous",
+  "next": "Next",
+  "pagesize": "Rows per page"
 }

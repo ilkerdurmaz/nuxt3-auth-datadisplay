@@ -1,6 +1,10 @@
 {
   "login": "Giriş Yap",
+  "logout": "Çıkış Yap",
   "signin": "Giriş",
   "email": "E-posta",
-  "password": "Şifre"
+  "password": "Şifre",
+  "previous": "Önceki",
+  "next": "Sonraki",
+  "pagesize": "Sayfa başına satır"
 }
