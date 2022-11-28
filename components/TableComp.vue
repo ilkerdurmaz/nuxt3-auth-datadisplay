@@ -17,30 +17,30 @@ function rowSelectHandler(rowId) {
 
 <template>
   <table class="min-w-full divide-y-2 divide-gray-400">
-    <thead class="bg-gray-100">
+    <thead class="bg-gray-400 text-white">
       <tr>
         <th
           v-for="property in columns"
           :key="property.id"
           scope="col"
-          class="p-4"
+          class="p-4 text-start"
         >
-          {{ property.title }}
+          {{ $t(property.title) }}
         </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="divide-y-2">
       <tr
         v-for="row in data"
         :key="row.id"
         @click="rowSelectHandler(row.id)"
-        class="hover:bg-gray-200 cursor-pointer border-b"
+        class="hover:bg-gray-200 cursor-pointer"
       >
         <td
           v-for="value in row"
-          class="p-4 w-4 text-center"
+          class="p-4 w-4"
           :class="{
-            'bg-gray-300': selectedRows.find((item) => item === row.id),
+            'bg-gray-300': selectedRows.some((item) => item === row.id),
           }"
         >
           {{ value }}
