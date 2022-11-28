@@ -6,5 +6,10 @@
   "password": "Şifre",
   "previous": "Önceki",
   "next": "Sonraki",
-  "pagesize": "Sayfa başına satır"
+  "pagesize": "Sayfa başına satır",
+  "moviename": "Film Adı",
+  "category": "Kategori",
+  "imdb": "IMDB Puanı",
+  "meta": "Metapuan",
+  "id": "id"
 }

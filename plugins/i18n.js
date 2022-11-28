@@ -4,6 +4,7 @@ import tr from "../locales/tr.json";
 
 export default defineNuxtPlugin(({ vueApp }) => {
   const i18n = createI18n({
+    legacy: false,
     locale: "en",
     fallbackLocale: "en",
     globalInjection: true,

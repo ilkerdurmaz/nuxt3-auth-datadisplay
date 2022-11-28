@@ -6,5 +6,10 @@
   "password": "Password",
   "previous": "Previous",
   "next": "Next",
-  "pagesize": "Rows per page"
+  "pagesize": "Rows per page",
+  "moviename": "Movie Name",
+  "category": "Category",
+  "imdb": "IMDB Score",
+  "meta": "Metascore",
+  "id": "id"
 }
