@@ -1,5 +1,7 @@
 # Nuxt 3 Auth Data Display
 
+## [DEMO](https://nuxt3-auth-datadisplay-mc5v.vercel.app/)
+
 You need to create .env file in the root directory and configure the SECRET_KEY
 
 ```bash
