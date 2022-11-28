@@ -2,6 +2,7 @@
 definePageMeta({
   middleware: "auth-check",
 });
+
 const tableColumns = ref([
   {
     id: 1,
@@ -9,19 +10,19 @@ const tableColumns = ref([
   },
   {
     id: 2,
-    title: "Title-1",
+    title: "moviename",
   },
   {
     id: 3,
-    title: "Title-2",
+    title: "category",
   },
   {
     id: 4,
-    title: "Title-3",
+    title: "imdb",
   },
   {
     id: 5,
-    title: "Title-4",
+    title: "meta",
   },
 ]);
 
@@ -56,18 +57,14 @@ onMounted(async () => {
 });
 
 async function paginationHandler(val) {
-  if (typeof val === "number") {
-    pageNumber.value = val;
-  } else if (val === "next" && pageNumber.value < pageAmount.value) {
-    pageNumber.value++;
-  } else if (val === "previous" && pageNumber.value > 1) {
-    pageNumber.value--;
-  }
-
+  if (typeof val === "number") pageNumber.value = val;
+  if (val === "next" && pageNumber.value < pageAmount.value) pageNumber.value++;
+  if (val === "previous" && pageNumber.value > 1) pageNumber.value--;
   tableData.value = await getTableData(pageNumber.value - 1, maxRowSize.value);
 }
 
 watch(maxRowSize, async () => {
+  pageNumber.value = 1;
   tableData.value = await getTableData(0, maxRowSize.value);
 });
 </script>
@@ -83,7 +80,7 @@ watch(maxRowSize, async () => {
         ></DropDownComp>
       </div>
     </div>
-    <div class="overflow-hidden rounded-lg border-2 border-gray-400">
+    <div class="rounded-lg border-2 border-gray-400">
       <TableComp
         :columns="tableColumns"
         :data="tableData"
@@ -92,6 +89,7 @@ watch(maxRowSize, async () => {
     <div class="flex justify-center py-4">
       <PaginationComp
         :pageAmount="pageAmount"
+        :selectedPage="pageNumber"
         @buttonClicked="paginationHandler"
       ></PaginationComp>
     </div>
