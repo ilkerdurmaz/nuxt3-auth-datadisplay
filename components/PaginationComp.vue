@@ -1,5 +1,5 @@
 <script setup>
-defineProps(["pageAmount", "selectedPage"]);
+const props = defineProps(["pageAmount", "selectedPage"]);
 const emit = defineEmits(["buttonClicked"]);
 function clickHandler(val) {
   emit("buttonClicked", val);
@@ -18,8 +18,9 @@ function clickHandler(val) {
         </button>
       </li>
       <li
-        v-for="(pageNumber, index) in pageAmount"
+        v-for="(pageNumber, index) in props.pageAmount"
         :key="index"
+        :class="{ 'bg-gray-400 text-white': selectedPage === index + 1 }"
       >
         <button @click="clickHandler(pageNumber)">{{ pageNumber }}</button>
       </li>
