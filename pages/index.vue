@@ -36,12 +36,27 @@ const pageSize = [
 const maxRowSize = ref("5");
 
 async function getTableData(pageNumber, size) {
+  const authCookie = useCookie("authCookie");
+
   const { data } = await useFetch("/api/data", {
     params: {
       page: pageNumber,
       size,
     },
+    headers: {
+      Authorization: authCookie.value?.token,
+    },
   });
+
+  if (!data.value) {
+    navigateTo("/");
+    return;
+  }
+
+  if (data.value.status === 401) {
+    navigateTo("/login");
+    return;
+  }
 
   if (data.value.status !== 200) {
     alert("Fetching Data Error, Status:" + data.value.status);
@@ -51,10 +66,6 @@ async function getTableData(pageNumber, size) {
   pageAmount.value = data.value.pageAmount;
   return data.value.data;
 }
-
-onMounted(async () => {
-  tableData.value = await getTableData(0, maxRowSize.value);
-});
 
 async function paginationHandler(val) {
   if (typeof val === "number") pageNumber.value = val;
@@ -66,6 +77,13 @@ async function paginationHandler(val) {
 watch(maxRowSize, async () => {
   pageNumber.value = 1;
   tableData.value = await getTableData(0, maxRowSize.value);
+});
+
+onMounted(async () => {
+  //fix for fetch data on page reload
+  setTimeout(async () => {
+    tableData.value = await getTableData(0, maxRowSize.value);
+  });
 });
 </script>
 

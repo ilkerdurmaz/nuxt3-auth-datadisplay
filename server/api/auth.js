@@ -10,7 +10,21 @@ export default defineEventHandler(async (event) => {
   const user = apiUser[0];
 
   if (email === user.email && password === user.password) {
-    const token = await jwt.sign({ email }, secretKey, { expiresIn: "1h" });
+    const token = await jwt.sign({ email }, secretKey, { expiresIn: "5m" });
+
+    setCookie(
+      event,
+      "authCookie",
+      JSON.stringify({
+        token,
+        email,
+      }),
+      {
+        expires: new Date(Date.now() + 300000),
+        sameSite: true,
+      }
+    );
+
     return {
       status: 200,
       token: token,
@@ -19,6 +33,7 @@ export default defineEventHandler(async (event) => {
       userData: { email: email },
     };
   }
+
   return {
     status: 401,
     message: "Authentication Error!",

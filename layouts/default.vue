@@ -20,7 +20,8 @@ useHead({
 });
 
 const route = useRoute();
-function logOut() {
+async function logOut() {
+  await useFetch("/api/logout");
   const auth = useAuth();
   auth.setAuth(false);
   navigateTo("/login");
